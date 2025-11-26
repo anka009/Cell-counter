@@ -7,7 +7,7 @@ from streamlit_image_coordinates import streamlit_image_coordinates
 import pandas as pd
 
 st.set_page_config(page_title="Iterative Kern-Zählung (OD + Deconv)", layout="wide")
-st.title("🧬 Iterative Kern-Zählung — Klick → Kalibriere → Zähle (ein Kern nur einmal)")
+st.title("🧬 Iterative Kern-Zählung (jeder Kern wird nur einmal gezählt)")
 
 # -------------------- Hilfsfunktionen --------------------
 def is_near(p1, p2, r=6):
@@ -127,7 +127,7 @@ with col2:
     st.sidebar.markdown("### Parameter")
     calib_radius = st.sidebar.slider("Kalibrier-Radius (px)", 1, 10, 5)
     detection_threshold = st.sidebar.slider("Threshold (0-1) für Detektion (Percentil-normalisiert)", 0.01, 0.9, 0.2, 0.01)
-    min_area = st.sidebar.number_input("Min. Konturfläche (px)", min_value=1, max_value=1000, value=8)
+    min_area = st.sidebar.number_input("Min. Konturfläche (px)", min_value=1, max_value=1000, value=25)
     dedup_dist = st.sidebar.slider("Min. Distanz für Doppelzählung (px)", 1, 20, 6)
     circle_radius = st.sidebar.slider("Marker-Radius (px)", 1, 10, 5)
     # default Hematoxylin & AEC vectors (Ruifrok-like approximations)
